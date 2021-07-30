@@ -7,15 +7,17 @@ public class GlWatermarkFilter extends GlOverlayFilter {
 
     private Bitmap bitmap;
     private Position position = Position.LEFT_TOP;
+    private float margin = 0f;
 
     public GlWatermarkFilter(Bitmap bitmap) {
         this.bitmap = bitmap;
     }
 
 
-    public GlWatermarkFilter(Bitmap bitmap, Position position) {
+    public GlWatermarkFilter(Bitmap bitmap, Position position, float margin) {
         this.bitmap = bitmap;
         this.position = position;
+        this.margin = margin;
     }
 
     @Override
@@ -23,16 +25,16 @@ public class GlWatermarkFilter extends GlOverlayFilter {
         if (bitmap != null && !bitmap.isRecycled()) {
             switch (position) {
                 case LEFT_TOP:
-                    canvas.drawBitmap(bitmap, 0, 0, null);
+                    canvas.drawBitmap(bitmap, margin, margin, null);
                     break;
                 case LEFT_BOTTOM:
-                    canvas.drawBitmap(bitmap, 0, canvas.getHeight() - bitmap.getHeight(), null);
+                    canvas.drawBitmap(bitmap, margin, canvas.getHeight() - bitmap.getHeight() - margin, null);
                     break;
                 case RIGHT_TOP:
-                    canvas.drawBitmap(bitmap, canvas.getWidth() - bitmap.getWidth(), 0, null);
+                    canvas.drawBitmap(bitmap, canvas.getWidth() - bitmap.getWidth() - margin, margin, null);
                     break;
                 case RIGHT_BOTTOM:
-                    canvas.drawBitmap(bitmap, canvas.getWidth() - bitmap.getWidth(), canvas.getHeight() - bitmap.getHeight(), null);
+                    canvas.drawBitmap(bitmap, canvas.getWidth() - bitmap.getWidth() - margin, canvas.getHeight() - bitmap.getHeight() - margin, null);
                     break;
             }
         }
