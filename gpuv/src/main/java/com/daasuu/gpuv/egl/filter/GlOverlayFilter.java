@@ -7,8 +7,6 @@ import android.opengl.GLES20;
 import android.opengl.GLUtils;
 import android.util.Size;
 
-
-
 public abstract class GlOverlayFilter extends GlFilter {
 
     private int[] textures = new int[1];
@@ -63,7 +61,7 @@ public abstract class GlOverlayFilter extends GlFilter {
     }
 
     @Override
-    public void onDraw() {
+    protected void onDraw(long presentationTimeUs) {
         if (bitmap == null) {
             createBitmap();
         }
@@ -74,7 +72,8 @@ public abstract class GlOverlayFilter extends GlFilter {
         bitmap.eraseColor(Color.argb(0, 0, 0, 0));
         Canvas bitmapCanvas = new Canvas(bitmap);
         bitmapCanvas.scale(1, -1, bitmapCanvas.getWidth() / 2, bitmapCanvas.getHeight() / 2);
-        drawCanvas(bitmapCanvas);
+
+        drawCanvas(bitmapCanvas, presentationTimeUs);
 
         int offsetDepthMapTextureUniform = getHandle("oTexture");// 3
 
@@ -88,7 +87,7 @@ public abstract class GlOverlayFilter extends GlFilter {
         GLES20.glUniform1i(offsetDepthMapTextureUniform, 3);
     }
 
-    protected abstract void drawCanvas(Canvas canvas);
+    protected abstract void drawCanvas(Canvas canvas, long presentationTimeUs);
 
     public static void releaseBitmap(Bitmap bitmap) {
         if (bitmap != null && !bitmap.isRecycled()) {
