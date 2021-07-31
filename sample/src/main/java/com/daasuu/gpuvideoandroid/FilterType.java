@@ -197,7 +197,7 @@ public enum FilterType {
             case VIGNETTE:
                 return new GlVignetteFilter();
             case WATERMARK:
-                return new GlWatermarkFilter(BitmapFactory.decodeResource(context.getResources(), R.drawable.sample_bitmap), GlWatermarkFilter.Position.RIGHT_BOTTOM);
+                return new GlWatermarkFilter(BitmapFactory.decodeResource(context.getResources(), R.drawable.sample_bitmap), GlWatermarkFilter.Position.RIGHT_BOTTOM, 0f);
             case WEAK_PIXEL:
                 return new GlWeakPixelInclusionFilter();
             case WHITE_BALANCE:

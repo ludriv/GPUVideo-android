@@ -60,7 +60,7 @@ public abstract class GlFrameBufferObjectRenderer implements GLSurfaceView.Rende
         GLES20.glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
         GLES20.glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-        normalShader.draw(framebufferObject.getTexName(), null);
+        normalShader.draw(framebufferObject.getTexName(), null, -1);
 
     }
 

@@ -217,13 +217,13 @@ public class EncodeRenderHandler implements Runnable {
                     if (isRecordFilter()) {
                         framebufferObject.enable();
                         //GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT);
-                        glFilter.draw(filterFramebufferObject.getTexName(), framebufferObject);
+                        glFilter.draw(filterFramebufferObject.getTexName(), framebufferObject, -1);
 
                         GLES20.glBindFramebuffer(GL_FRAMEBUFFER, 0);
                         GLES20.glViewport(0, 0, framebufferObject.getWidth(), framebufferObject.getHeight());
 
                         GLES20.glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-                        normalFilter.draw(framebufferObject.getTexName(), null);
+                        normalFilter.draw(framebufferObject.getTexName(), null, -1);
                     }
 
 

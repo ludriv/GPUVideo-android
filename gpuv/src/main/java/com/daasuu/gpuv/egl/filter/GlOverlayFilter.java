@@ -7,6 +7,10 @@ import android.opengl.GLES20;
 import android.opengl.GLUtils;
 import android.util.Size;
 
+
+
+
+
 public abstract class GlOverlayFilter extends GlFilter {
 
     private int[] textures = new int[1];

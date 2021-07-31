@@ -79,7 +79,7 @@ public class GlFilterGroup extends GlFilter {
     private int prevTexName;
 
     @Override
-    public void draw(final int texName, final GlFramebufferObject fbo, final Long presentationTimeUs) {
+    public void draw(final int texName, final GlFramebufferObject fbo, final long presentationTimeUs) {
         prevTexName = texName;
         for (final Pair<GlFilter, GlFramebufferObject> pair : list) {
             if (pair.second != null) {

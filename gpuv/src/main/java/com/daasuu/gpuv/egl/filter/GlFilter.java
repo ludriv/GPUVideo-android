@@ -105,11 +105,7 @@ public class GlFilter {
     }
 
     //
-    public void draw(final int texName, final GlFramebufferObject fbo) {
-        draw(texName, fbo, null);
-    }
-
-    public void draw(final int texName, final GlFramebufferObject fbo, final Long presentationTimeUs) {
+    public void draw(final int texName, final GlFramebufferObject fbo, final long presentationTimeUs) {
         useProgram();
 
         GLES20.glBindBuffer(GLES20.GL_ARRAY_BUFFER, vertexBufferName);
@@ -123,9 +119,7 @@ public class GlFilter {
         GLES20.glUniform1i(getHandle("sTexture"), 0);
 
         onDraw();
-        if (presentationTimeUs != null) {
-            onDraw(presentationTimeUs);
-        }
+        onDraw(presentationTimeUs);
 
         GLES20.glDrawArrays(GLES20.GL_TRIANGLE_STRIP, 0, 4);
 

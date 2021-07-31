@@ -242,7 +242,7 @@ public class GlPreviewRenderer extends GlFrameBufferObjectRenderer implements Su
         if (glFilter != null) {
             fbo.enable();
             GLES20.glClear(GL_COLOR_BUFFER_BIT);
-            glFilter.draw(filterFramebufferObject.getTexName(), fbo);
+            glFilter.draw(filterFramebufferObject.getTexName(), fbo, -1);
         }
 
         synchronized (this) {
