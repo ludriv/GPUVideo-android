@@ -10,7 +10,6 @@ import android.util.Size;
 
 
 
-
 public abstract class GlOverlayFilter extends GlFilter {
 
     private int[] textures = new int[1];
@@ -73,7 +72,7 @@ public abstract class GlOverlayFilter extends GlFilter {
             createBitmap();
         }
 
-        bitmap.eraseColor(Color.argb(0, 0, 0, 0));
+        //bitmap.eraseColor(Color.argb(0, 0, 0, 0));
         Canvas bitmapCanvas = new Canvas(bitmap);
         bitmapCanvas.scale(1, -1, bitmapCanvas.getWidth() / 2, bitmapCanvas.getHeight() / 2);
 
